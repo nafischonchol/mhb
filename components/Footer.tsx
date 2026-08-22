@@ -10,7 +10,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between container-site gap-2">
         <span>© 2026 MHB — মাহমুদুর হাসান বিদ্যানিকেতন। সর্বস্বত্ব সংরক্ষিত।</span>
-        <span>Developed by <span className="text-slate-300 font-medium">Nafis Chonchol</span></span>
+        <span>Developed by <a href="https://www.facebook.com/nafis.chonchol/" target="_blank" rel="noopener noreferrer" className="text-slate-300 font-medium hover:underline hover:text-white transition-colors">Nafis Chonchol</a></span>
       </div>
     </footer>
   );

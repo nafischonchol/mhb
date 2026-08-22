@@ -83,5 +83,5 @@ npm run build
 
 ## 👨‍💻 Developer
 
-Developed with ❤️ by **Nafis Chonchol**.
+Developed with ❤️ by [**Nafis Chonchol**](https://www.facebook.com/nafis.chonchol/).
 
