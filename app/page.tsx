@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
+  Award,
   CalendarDays,
+  CheckCircle2,
+  Facebook,
   GraduationCap,
   Megaphone,
+  Sparkles,
+  Trophy,
   Users,
 } from "lucide-react";
 
@@ -39,6 +44,13 @@ const notices = [
   "বার্ষিক পরীক্ষার সময়সূচি প্রকাশ করা হয়েছে।",
   "নতুন শিক্ষাবর্ষের ভর্তি কার্যক্রম শীঘ্রই শুরু হবে।",
   "অভিভাবক সমাবেশের তারিখ ও সময় ঘোষণা করা হয়েছে।",
+];
+
+const successStats = [
+  { label: "পাসের গড় হার", value: "৯৮.৫%", desc: "বিগত এসএসসি পরীক্ষার সাফল্য" },
+  { label: "জিপিএ-৫ প্রাপ্তি", value: "৪০+", desc: "কৃতি শিক্ষার্থীদের অনন্য অর্জন" },
+  { label: "অভিজ্ঞ শিক্ষকমণ্ডলী", value: "২৫+", desc: "দক্ষ ও নিবেদিতপ্রাণ শিক্ষক" },
+  { label: "শিক্ষার্থী সংখ্যা", value: "১২০০+", desc: "উৎসাহী ও অনুশাসিত শিক্ষার্থী" },
 ];
 
 export default function Home() {
@@ -123,7 +135,7 @@ export default function Home() {
               "খেলাধুলা, সাংস্কৃতিক ও বিজ্ঞানভিত্তিক কার্যক্রম।",
             ],
           ].map(([Icon, title, text]: any) => (
-            <div key={title} className="rounded-2xl bg-white p-6 shadow-soft">
+            <div key={title} className="rounded-2xl bg-white p-6 shadow-soft border border-slate-100">
               <Icon className="h-8 w-8 text-blue-600" />
               <h3 className="mt-4 text-lg font-bold">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
@@ -132,7 +144,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container-site grid gap-10 py-20 lg:grid-cols-[1fr_.9fr]">
+      {/* SSC Achievements & Stats Section */}
+      <section className="container-site py-16">
+        <div className="rounded-3xl bg-slate-900 p-8 text-white md:p-12 shadow-xl relative overflow-hidden">
+          <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-blue-600/20 blur-3xl" />
+          <div className="relative z-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <span className="inline-flex items-center gap-2 rounded-full bg-amber-500/20 px-3.5 py-1 text-xs font-bold text-amber-300 border border-amber-500/30">
+                  <Trophy className="h-3.5 w-3.5" /> আমাদের গর্ব ও সাফল্য
+                </span>
+                <h2 className="mt-3 text-3xl font-black sm:text-4xl">
+                  এসএসসি ও বোর্ড পরীক্ষার সাফল্য
+                </h2>
+                <p className="mt-2 text-slate-300 max-w-xl text-sm sm:text-base">
+                  মাহমুদুল হাসান বিদ্যানিকেতনের শিক্ষার্থীরা প্রতি বছরই এসএসসি ও সমমানের বোর্ড পরীক্ষায় চমৎকার ফল অর্জন করে প্রতিষ্ঠানের সুনাম বয়ে আনছে।
+                </p>
+              </div>
+              <Link
+                href="/academics"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white hover:bg-blue-700 transition"
+              >
+                একাডেমিক সাফল্য দেখুন <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {successStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                >
+                  <div className="text-3xl font-black text-amber-400 sm:text-4xl">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 font-bold text-white">{stat.label}</div>
+                  <div className="mt-1 text-xs text-slate-400">{stat.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-site grid gap-10 py-10 lg:grid-cols-[1fr_.9fr]">
         <div>
           <div className="flex items-end justify-between">
             <div>
@@ -146,10 +201,10 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-6 space-y-3">
-            {notices.map((notice, i) => (
+            {notices.map((notice) => (
               <div
                 key={notice}
-                className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5"
+                className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 hover:border-blue-200 transition"
               >
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                   <Megaphone className="h-5 w-5" />
@@ -174,7 +229,7 @@ export default function Home() {
             {events.map((event) => (
               <div
                 key={event.title}
-                className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-4"
+                className="flex gap-4 rounded-2xl border border-slate-200 bg-white p-4 hover:border-emerald-200 transition"
               >
                 <div className="w-16 shrink-0 rounded-xl bg-slate-900 p-2 text-center text-white">
                   <div className="text-xl font-black">{event.date}</div>
@@ -189,6 +244,49 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Facebook Community & Alumni Banner */}
+      <section className="container-site pb-20 pt-6">
+        <div className="rounded-3xl border border-blue-100 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 p-8 md:p-12 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3.5 py-1 text-xs font-bold text-blue-700">
+              <Sparkles className="h-3.5 w-3.5 text-blue-600" /> অফিশিয়াল সোশ্যাল কমিউনিটি
+            </span>
+            <h2 className="mt-4 text-2xl font-black text-slate-900 sm:text-3xl">
+              যুক্ত থাকুন আমাদের ফেসবুক গ্রুপ ও পেজে
+            </h2>
+            <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+              মাহমুদুল হাসান বিদ্যানিকেতনের প্রাক্তন ও বর্তমান শিক্ষক, শিক্ষার্থী ও অভিভাবকদের অফিশিয়াল ফেসবুক গ্রুপে ২০,০০০+ সদস্য নিয়মিত তথ্য, স্কুলের খবর ও স্মৃতি শেয়ার করেন।
+            </p>
+            <div className="mt-4 flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> তাৎক্ষণিক নোটিশ ও আপডেট</span>
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> কৃতি শিক্ষার্থী পরিচিতি</span>
+              <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-600" /> অ্যালামনাই নেটওয়ার্ক</span>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto">
+            <a
+              href="https://www.facebook.com/groups/1979843445634332"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-md hover:bg-blue-700 transition"
+            >
+              <Users className="h-4 w-4" />
+              <span>ফেসবুক গ্রুপে যুক্ত হন</span>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61552153681588"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-white border border-slate-300 px-6 py-3.5 text-sm font-bold text-slate-800 hover:bg-slate-50 transition"
+            >
+              <Facebook className="h-4 w-4 text-blue-600" />
+              <span>অফিশিয়াল পেজ ফলো করুন</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
