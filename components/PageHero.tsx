@@ -1,0 +1,3 @@
+export default function PageHero({ title, subtitle }: { title: string; subtitle: string }) {
+  return <section className="gradient-hero py-16 text-white"><div className="container-site"><p className="text-sm font-bold uppercase tracking-widest text-blue-200">MHB • Mahmudur Hasan Bidyaniketan</p><h1 className="mt-3 text-4xl font-black">{title}</h1><p className="mt-3 max-w-2xl text-blue-100">{subtitle}</p></div></section>;
+}

@@ -1,0 +1,3 @@
+import PageHero from "@/components/PageHero";
+const notices = ["বার্ষিক পরীক্ষার সময়সূচি","নতুন শিক্ষাবর্ষের ভর্তি বিজ্ঞপ্তি","অভিভাবক সমাবেশের নোটিশ","ছুটির দিনের বিজ্ঞপ্তি","বার্ষিক ক্রীড়া প্রতিযোগিতার নোটিশ"];
+export default function Notices() { return <><PageHero title="নোটিশ বোর্ড" subtitle="বিদ্যালয়ের গুরুত্বপূর্ণ বিজ্ঞপ্তি ও ঘোষণা।" /><section className="container-site py-16"><div className="space-y-3">{notices.map((n,i)=><div key={n} className="flex items-center justify-between rounded-2xl bg-white p-5 shadow-soft"><div><h2 className="font-bold">{n}</h2><p className="mt-1 text-xs text-slate-500">০৮ আগস্ট ২০২৬</p></div><span className="rounded-lg bg-blue-50 px-3 py-2 text-xs font-bold text-blue-700">PDF</span></div>)}</div></section></> }

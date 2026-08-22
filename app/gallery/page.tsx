@@ -1,0 +1,2 @@
+import PageHero from "@/components/PageHero";
+export default function Gallery() { return <><PageHero title="গ্যালারি" subtitle="বিদ্যালয়ের বিভিন্ন কার্যক্রম ও স্মরণীয় মুহূর্ত।" /><section className="container-site grid grid-cols-2 gap-4 py-16 md:grid-cols-3">{Array.from({length:9}).map((_,i)=><div key={i} className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-200 to-blue-100 p-4"><div className="flex h-full items-end rounded-xl bg-white/20 p-4 text-sm font-bold text-slate-700">MHB Gallery {i+1}</div></div>)}</section></> }
