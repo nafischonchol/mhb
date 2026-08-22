@@ -17,7 +17,7 @@ export default function Footer() {
                 মাহমুদুল হাসান বিদ্যানিকেতন
               </div>
               <div className="text-xs text-slate-400 font-semibold mt-0.5">
-                EIIN: 114716
+                EIIN: 114704
               </div>
             </div>
           </div>

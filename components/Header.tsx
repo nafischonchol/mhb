@@ -31,7 +31,7 @@ export default function Header() {
               মাহমুদুল হাসান বিদ্যানিকেতন
             </div>
             <div className="text-xs font-semibold text-slate-500">
-              EIIN: 114716
+              EIIN: 114704
             </div>
           </div>
         </Link>
