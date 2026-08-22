@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { Megaphone, Calendar, Eye, Download, FileText, X, ZoomIn } from "lucide-react";
+import { Megaphone, Calendar, Eye, Download, FileText, X, ZoomIn, ZoomOut, RotateCcw, ExternalLink } from "lucide-react";
 
 interface NoticeItem {
   id: number;
@@ -61,16 +61,24 @@ const noticeData: NoticeItem[] = [
 export default function Notices() {
   const [selectedNoticeImage, setSelectedNoticeImage] = useState<string | null>(null);
   const [selectedNoticeTitle, setSelectedNoticeTitle] = useState<string>("");
+  const [zoomScale, setZoomScale] = useState<number>(1);
 
   const openImageModal = (imageSrc: string, title: string) => {
     setSelectedNoticeImage(imageSrc);
     setSelectedNoticeTitle(title);
+    setZoomScale(1);
   };
 
   const closeImageModal = () => {
     setSelectedNoticeImage(null);
     setSelectedNoticeTitle("");
+    setZoomScale(1);
   };
+
+  const zoomIn = () => setZoomScale(prev => Math.min(prev + 0.3, 3));
+  const zoomOut = () => setZoomScale(prev => Math.max(prev - 0.3, 0.8));
+  const resetZoom = () => setZoomScale(1);
+  const toggleZoom = () => setZoomScale(prev => (prev === 1 ? 1.8 : 1));
 
   return (
     <>
@@ -104,18 +112,21 @@ export default function Notices() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <button
-                    onClick={() => openImageModal(featured.image!, featured.title)}
-                    className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700 hover:scale-[1.02]"
+                
+                  <a
+                    href={featured.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-100 px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-200"
                   >
-                    <Eye className="w-4 h-4" /> অফিশিয়াল নোটিশ পেপার দেখুন
-                  </button>
+                    <ExternalLink className="w-4 h-4" /> নতুন ট্যাবে বড় করে খুলুন
+                  </a>
                   <a
                     href={featured.image}
                     download="MHB_Notice.jpg"
                     className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-100 px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-200"
                   >
-                    <Download className="w-4 h-4" /> ডাউনলোড করুন
+                    <Download className="w-4 h-4" /> ডাউনলোড
                   </a>
                 </div>
               </div>
@@ -123,17 +134,15 @@ export default function Notices() {
               {/* Notice Image Preview Container */}
               <div
                 onClick={() => openImageModal(featured.image!, featured.title)}
-                className="md:col-span-5 relative bg-slate-900 overflow-hidden cursor-pointer group min-h-[260px] flex items-center justify-center p-4"
+                className="md:col-span-5 relative bg-slate-950 overflow-hidden cursor-pointer group min-h-[280px] flex items-center justify-center p-4"
               >
                 <img
                   src={featured.image}
                   alt={featured.title}
-                  className="max-h-[320px] w-auto object-contain transition-transform duration-500 group-hover:scale-105 rounded-xl shadow-lg"
+                  className="max-h-[340px] w-auto object-contain transition-transform duration-500 group-hover:scale-105 rounded-xl shadow-lg"
                 />
-                <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-bold text-slate-900 shadow backdrop-blur">
-                    <ZoomIn className="w-4 h-4" /> সম্পূর্ণ নোটিশ দেখুন
-                  </span>
+                <div className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-4 text-center">
+                  
                 </div>
               </div>
             </div>
@@ -176,7 +185,7 @@ export default function Notices() {
                         onClick={() => openImageModal(notice.image!, notice.title)}
                         className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-blue-700"
                       >
-                        <Eye className="w-3.5 h-3.5" /> নোটিশ দেখুন
+                        <ZoomIn className="w-3.5 h-3.5" /> নোটিশ জুম করে দেখুন
                       </button>
                     ) : (
                       <span className="inline-flex items-center gap-1 rounded-xl bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-600">
@@ -192,49 +201,101 @@ export default function Notices() {
         </div>
       </section>
 
-      {/* Image Modal Lightbox */}
+      {/* Image Modal Lightbox with Full Zoom & Scroll Control */}
       {selectedNoticeImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-2 sm:p-6 backdrop-blur-md animate-fadeIn"
           onClick={closeImageModal}
         >
           <div
-            className="relative max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-200"
+            className="relative max-w-5xl w-full h-[92vh] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Topbar */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-slate-50">
-              <h3 className="text-base font-bold text-slate-900 line-clamp-1 pr-4">
-                {selectedNoticeTitle}
-              </h3>
-              <button
-                onClick={closeImageModal}
-                className="rounded-full p-1.5 text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition"
-              >
-                <X className="w-5 h-5" />
-              </button>
+            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-900/90 shrink-0">
+              <div className="flex items-center gap-3">
+                <span className="rounded-md bg-blue-600/30 text-blue-300 border border-blue-500/30 px-2.5 py-1 text-xs font-bold">
+                  অফিসিয়াল নোটিশ
+                </span>
+                <h3 className="text-sm sm:text-base font-bold text-white line-clamp-1">
+                  {selectedNoticeTitle}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <a
+                  href={selectedNoticeImage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" /> নতুন উইন্ডোতে খুলুন
+                </a>
+                <button
+                  onClick={closeImageModal}
+                  className="rounded-full p-2 text-slate-400 hover:bg-slate-800 hover:text-white transition"
+                  title="বন্ধ করুন"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
             </div>
 
-            {/* Modal Image View */}
-            <div className="p-4 bg-slate-900 max-h-[75vh] overflow-auto flex items-center justify-center">
-              <img
-                src={selectedNoticeImage}
-                alt={selectedNoticeTitle}
-                className="max-w-full h-auto object-contain rounded-lg shadow"
-              />
+            {/* Interactive Zoom Toolbar */}
+            <div className="bg-slate-950/80 px-4 py-2 border-b border-slate-800 flex items-center justify-between text-xs text-slate-300 shrink-0">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={zoomIn}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition shadow"
+                  title="জুম ইন (+)"
+                >
+                  <ZoomIn className="w-4 h-4" /> বড় করুন (+)
+                </button>
+                <button
+                  onClick={zoomOut}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold transition border border-slate-700"
+                  title="জুম আউট (-)"
+                >
+                  <ZoomOut className="w-4 h-4" /> ছোট করুন (-)
+                </button>
+                <button
+                  onClick={resetZoom}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition border border-slate-700"
+                  title="রিসেট"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" /> রিসেট ({Math.round(zoomScale * 100)}%)
+                </button>
+              </div>
+
+              <span className="hidden md:inline-block text-slate-400 text-xs">
+                💡 ছবির ওপর ক্লিক করেও বড় বা ছোট করে স্পষ্টভাবে পড়া যাবে
+              </span>
+            </div>
+
+            {/* Modal Scrollable Image View */}
+            <div className="flex-1 bg-black overflow-auto p-4 sm:p-8 flex items-start justify-center cursor-grab active:cursor-grabbing">
+              <div
+                className="transition-transform duration-200 ease-out origin-top flex justify-center"
+                style={{ transform: `scale(${zoomScale})` }}
+                onClick={toggleZoom}
+              >
+                <img
+                  src={selectedNoticeImage}
+                  alt={selectedNoticeTitle}
+                  className="max-w-none w-[900px] sm:w-[1000px] h-auto object-contain rounded-lg shadow-2xl border border-slate-800 cursor-zoom-in"
+                  title="ক্লিক করে বড় করুন"
+                />
+              </div>
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
-              <span className="text-xs text-slate-500 font-medium">
-                অফিশিয়াল নোটিশ ডকুমেন্টস
-              </span>
+            <div className="p-3 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 shrink-0">
+              <span>লেখাগুলো স্পষ্ট না মনে হলে "নতুন উইন্ডোতে খুলুন" অথবা "ডাউনলোড" করতে পারেন।</span>
               <a
                 href={selectedNoticeImage}
-                download="Notice.jpg"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-700 transition"
+                download="MHB_Notice.jpg"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 transition shadow"
               >
-                <Download className="w-3.5 h-3.5" /> ডাউনলোড নোটিশ
+                <Download className="w-3.5 h-3.5" /> অফিশিয়াল নোটিশ ডাউনলোড
               </a>
             </div>
           </div>
