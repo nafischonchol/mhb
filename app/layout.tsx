@@ -24,8 +24,11 @@ export const metadata: Metadata = {
     "Tangail School",
     "মাধ্যমিক বিদ্যালয় টাঙ্গাইল",
   ],
-  authors: [{ name: "মাহমুদুল হাসান বিদ্যানিকেতন" }],
-  creator: "মাহমুদুল হাসান বিদ্যানিকেতন",
+  authors: [
+    { name: "মাহমুদুল হাসান বিদ্যানিকেতন" },
+    { name: "Nafis Chonchol", url: "https://www.facebook.com/nafis.chonchol/" },
+  ],
+  creator: "Nafis Chonchol",
   publisher: "মাহমুদুল হাসান বিদ্যানিকেতন",
   formatDetection: {
     telephone: true,
