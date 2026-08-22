@@ -8,7 +8,10 @@ export default function Footer() {
         <div><h3 className="font-bold text-white">দ্রুত লিংক</h3><div className="mt-4 grid gap-3 text-sm"><Link href="/about">আমাদের সম্পর্কে</Link><Link href="/admission">ভর্তি</Link><Link href="/notices">নোটিশ</Link><Link href="/contact">যোগাযোগ</Link></div></div>
         <div><h3 className="font-bold text-white">যোগাযোগ</h3><div className="mt-4 space-y-3 text-sm text-slate-400"><p>📍 আউটিয়া, ঘারিন্দা, টাঙ্গাইল</p><p>☎ 01700-000000</p><p>✉ info@mhb.edu.bd</p></div></div>
       </div>
-      <div className="border-t border-white/10 py-5 text-center text-xs text-slate-500">© 2026 MHB — মাহমুদুর হাসান বিদ্যানিকেতন। সর্বস্বত্ব সংরক্ষিত।</div>
+      <div className="border-t border-white/10 py-5 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between container-site gap-2">
+        <span>© 2026 MHB — মাহমুদুর হাসান বিদ্যানিকেতন। সর্বস্বত্ব সংরক্ষিত।</span>
+        <span>Developed by <span className="text-slate-300 font-medium">Nafis Chonchol</span></span>
+      </div>
     </footer>
   );
 }
