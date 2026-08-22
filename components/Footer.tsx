@@ -10,8 +10,13 @@ export default function Footer() {
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white font-black text-slate-950">
               MHB
             </div>
-            <div className="font-bold text-white">
-              মাহমুদুর হাসান বিদ্যানিকেতন
+            <div>
+              <div className="font-bold text-white">
+                মাহমুদুর হাসান বিদ্যানিকেতন
+              </div>
+              <div className="text-xs text-slate-400 font-semibold mt-0.5">
+                EIIN: 114716
+              </div>
             </div>
           </div>
           <p className="mt-5 max-w-md text-sm leading-7 text-slate-400">
