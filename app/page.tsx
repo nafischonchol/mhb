@@ -39,13 +39,24 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden lg:block">
-            <div className="rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur">
-              <div className="aspect-[4/3] rounded-[1.5rem] bg-gradient-to-br from-blue-200/30 via-white/10 to-emerald-200/20 p-8">
-                <div className="flex h-full flex-col justify-between">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white font-black text-blue-900">MHB</div>
+            <div className="rounded-[2rem] border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                <img
+                  src="/images/campus.jpg"
+                  alt="MHB Campus - মাহমুদুর হাসান বিদ্যানিকেতন"
+                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent p-6 flex flex-col justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/90 font-black text-blue-950 shadow backdrop-blur">
+                    MHB
+                  </div>
                   <div>
-                    <p className="text-sm text-blue-100">OUR CAMPUS</p>
-                    <p className="mt-2 text-2xl font-bold">শিক্ষার জন্য সুন্দর পরিবেশ</p>
+                    <span className="inline-block rounded-full bg-blue-600/90 px-3 py-1 text-xs font-bold tracking-wider text-white backdrop-blur">
+                      OUR CAMPUS
+                    </span>
+                    <p className="mt-2 text-xl font-bold text-white">
+                      শিক্ষার জন্য সুন্দর ও মনোরম পরিবেশ
+                    </p>
                   </div>
                 </div>
               </div>
