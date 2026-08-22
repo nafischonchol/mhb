@@ -47,9 +47,11 @@ export default function Home() {
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent p-6 flex flex-col justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/90 font-black text-blue-950 shadow backdrop-blur">
-                    MHB
-                  </div>
+                  <img
+                    src="/images/logo.jpg"
+                    alt="MHB Logo"
+                    className="h-12 w-12 rounded-xl object-cover shadow border border-white/20"
+                  />
                   <div>
                     <span className="inline-block rounded-full bg-blue-600/90 px-3 py-1 text-xs font-bold tracking-wider text-white backdrop-blur">
                       OUR CAMPUS

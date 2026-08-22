@@ -21,9 +21,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur">
       <div className="container-site flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-900 font-black text-white">
-            MHB
-          </div>
+          <img
+            src="/images/logo.jpg"
+            alt="MHB Logo"
+            className="h-12 w-12 rounded-xl object-cover border border-slate-200"
+          />
           <div>
             <div className="font-black text-slate-900">
               মাহমুদুর হাসান বিদ্যানিকেতন

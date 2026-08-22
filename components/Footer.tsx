@@ -7,9 +7,11 @@ export default function Footer() {
       <div className="container-site grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white font-black text-slate-950">
-              MHB
-            </div>
+            <img
+              src="/images/logo.jpg"
+              alt="MHB Logo"
+              className="h-12 w-12 rounded-xl object-cover border border-white/20"
+            />
             <div>
               <div className="font-bold text-white">
                 মাহমুদুর হাসান বিদ্যানিকেতন
