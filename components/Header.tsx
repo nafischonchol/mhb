@@ -28,7 +28,7 @@ export default function Header() {
           />
           <div>
             <div className="font-black text-slate-900">
-              মাহমুদুর হাসান বিদ্যানিকেতন
+              মাহমুদুল হাসান বিদ্যানিকেতন
             </div>
             <div className="text-xs font-semibold text-slate-500">
               EIIN: 114716

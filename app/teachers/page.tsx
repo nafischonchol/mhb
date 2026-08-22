@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+
+export const metadata: Metadata = {
+  title: "শিক্ষকবৃন্দ",
+  description:
+    "মাহমুদুল হাসান বিদ্যানিকেতনের অভিজ্ঞ, নিবেদিত ও দক্ষ শিক্ষক-শিক্ষিকাবৃন্দের তালিকা।",
+};
 
 const teachers = [
   "মোঃ নজরুল ইসলাম (Md Najrul Islam)",

@@ -1,3 +1,42 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-const events = ["বার্ষিক ক্রীড়া প্রতিযোগিতা","অভিভাবক সমাবেশ","বিজ্ঞান ও প্রযুক্তি মেলা","সাংস্কৃতিক অনুষ্ঠান","শিক্ষা সফর","বার্ষিক পুরস্কার বিতরণী"];
-export default function Events() { return <><PageHero title="ইভেন্টস" subtitle="বিদ্যালয়ের আসন্ন ও সাম্প্রতিক কার্যক্রম।" /><section className="container-site grid gap-5 py-16 md:grid-cols-2">{events.map((e,i)=><article key={e} className="rounded-2xl bg-white p-6 shadow-soft"><div className="text-sm font-bold text-blue-600">২০২৬ • ইভেন্ট {i+1}</div><h2 className="mt-2 text-xl font-black">{e}</h2><p className="mt-3 text-slate-600">শিক্ষার্থীদের অংশগ্রহণে একটি আনন্দময় ও শিক্ষামূলক অনুষ্ঠান। বিস্তারিত সময়সূচি পরে আপডেট করা যাবে।</p></article>)}</section></> }
+
+export const metadata: Metadata = {
+  title: "ইভেন্টস",
+  description:
+    "মাহমুদুল হাসান বিদ্যানিকেতনের সাম্প্রতিক ও আসন্ন ইভেন্টসমূহ — বার্ষিক ক্রীড়া প্রতিযোগিতা, বিজ্ঞান মেলা, অভিভাবক সমাবেশ ইত্যাদি।",
+};
+
+const events = [
+  "বার্ষিক ক্রীড়া প্রতিযোগিতা",
+  "অভিভাবক সমাবেশ",
+  "বিজ্ঞান ও প্রযুক্তি মেলা",
+  "সাংস্কৃতিক অনুষ্ঠান",
+  "শিক্ষা সফর",
+  "বার্ষিক পুরস্কার বিতরণী",
+];
+
+export default function Events() {
+  return (
+    <>
+      <PageHero
+        title="ইভেন্টস"
+        subtitle="বিদ্যালয়ের আসন্ন ও সাম্প্রতিক কার্যক্রম।"
+      />
+      <section className="container-site grid gap-5 py-16 md:grid-cols-2">
+        {events.map((e, i) => (
+          <article key={e} className="rounded-2xl bg-white p-6 shadow-soft">
+            <div className="text-sm font-bold text-blue-600">
+              ২০২৬ • ইভেন্ট {i + 1}
+            </div>
+            <h2 className="mt-2 text-xl font-black">{e}</h2>
+            <p className="mt-3 text-slate-600">
+              শিক্ষার্থীদের অংশগ্রহণে একটি আনন্দময় ও শিক্ষামূলক অনুষ্ঠান।
+              বিস্তারিত সময়সূচি পরে আপডেট করা যাবে।
+            </p>
+          </article>
+        ))}
+      </section>
+    </>
+  );
+}

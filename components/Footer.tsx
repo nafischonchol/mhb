@@ -14,7 +14,7 @@ export default function Footer() {
             />
             <div>
               <div className="font-bold text-white">
-                মাহমুদুর হাসান বিদ্যানিকেতন
+                মাহমুদুল হাসান বিদ্যানিকেতন
               </div>
               <div className="text-xs text-slate-400 font-semibold mt-0.5">
                 EIIN: 114716
@@ -96,7 +96,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10 py-5 text-center text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between container-site gap-2">
         <span>
-          © 2026 MHB — মাহমুদুর হাসান বিদ্যানিকেতন। সর্বস্বত্ব সংরক্ষিত।
+          © 2026 MHB — মাহমুদুল হাসান বিদ্যানিকেতন। সর্বস্বত্ব সংরক্ষিত।
         </span>
         <span>
           Developed by{" "}
