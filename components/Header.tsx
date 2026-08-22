@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  ["হোম", "/"], ["আমাদের সম্পর্কে", "/about"], ["প্রিন্সিপালের বার্তা", "/principal"],
+  ["হোম", "/"], ["আমাদের সম্পর্কে", "/about"], ["প্রধান শিক্ষকের বার্তা", "/principal"],
   ["একাডেমিক", "/academics"], ["শিক্ষকবৃন্দ", "/teachers"], ["ইভেন্ট", "/events"],
   ["নোটিশ", "/notices"], ["গ্যালারি", "/gallery"], ["যোগাযোগ", "/contact"]
 ];
