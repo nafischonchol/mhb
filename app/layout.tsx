@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://mhb.mohimaa.shop",
   ),
+  alternates: {
+    canonical: "./",
+  },
   title: {
     default: "মাহমুদুল হাসান বিদ্যানিকেতন | MHB School",
     template: "%s | মাহমুদুল হাসান বিদ্যানিকেতন",
